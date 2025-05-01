@@ -1,3 +1,5 @@
+# SQLFluff configuration file
+# SQLFluff version: 3.4.X
 [sqlfluff]
 verbose = 2
 nocolor = False
@@ -7,6 +9,12 @@ processes = -1
 max_line_lenght = 120
 recursive = False
 
+# Exclude rules
+# L031: Avoid table aliases in from clauses and join conditions
+# RF01: References cannot reference objects not present in FROM clause
+# RF02: References should be qualified if select has more than one referenced table/view
+# ST01: Do not specify else null in a case when statement (redundant)
+# L034: Select wildcards then simple targets before calculations and aggregates.
 exclude_rules = L031, RF01, RF02, ST01, L034
 
 [sqlfluff:indentation]
