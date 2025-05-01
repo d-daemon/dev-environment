@@ -1,0 +1,38 @@
+[sqlfluff]
+verbose = 2
+nocolor = False
+dialect = bigquery
+templater = jinja
+processes = -1
+max_line_lenght = 120
+recursive = False
+
+exclude_rules = L031, RF01, RF02, ST01, L034
+
+[sqlfluff:indentation]
+indent_unit = space
+tab_space_size = 4
+indented_joins = False
+indented_ctes = False
+indented_using_on = True
+indented_on_contents = True
+indented_then = True
+indented_then_contents = True
+allow_implicit_indents = True
+template_blocks_indent = True
+
+[sqlfluff:layout:type:alias_expression]
+spacing_before = align
+align_within = statement
+align_scope = file
+
+[sqlfluff:rules:convention.terminator]
+multiline_newline = True
+require_final_semicolon = False
+
+[sqlfluff:rules:layout.long_lines]
+ignore_comment_lines = True
+ignore_comment_clauses = True
+
+[sqlfluff:rules:layout.select_targets]
+wildcard_policy = multiple
