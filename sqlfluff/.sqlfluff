@@ -5,6 +5,7 @@ verbose = 2
 nocolor = False
 dialect = bigquery
 templater = jinja
+sql_file_exts = .sql,.sql.j2,.dml,.ddl,.bqsql
 processes = -1
 max_line_lenght = 120
 recursive = False
@@ -24,7 +25,7 @@ indented_joins = False
 indented_ctes = False
 indented_using_on = True
 indented_on_contents = True
-indented_then = True
+indented_then = False
 indented_then_contents = True
 allow_implicit_indents = True
 template_blocks_indent = True
@@ -33,6 +34,12 @@ template_blocks_indent = True
 spacing_before = align
 align_within = statement
 align_scope = file
+
+[sqlfluff:layout:type:when_clause]
+spacing_before = align
+spacing_within = any
+align_within = parent
+align_scope = bracketed
 
 [sqlfluff:rules:convention.terminator]
 multiline_newline = True
