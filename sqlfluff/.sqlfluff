@@ -51,3 +51,6 @@ ignore_comment_clauses = True
 
 [sqlfluff:rules:layout.select_targets]
 wildcard_policy = multiple
+
+[sqlfluff:layout:type:partitionby_clause]
+keyword_line_position = leading
