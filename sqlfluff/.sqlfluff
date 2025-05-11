@@ -35,12 +35,6 @@ spacing_before = align
 align_within = statement
 align_scope = file
 
-[sqlfluff:layout:type:when_clause]
-spacing_before = align
-spacing_within = any
-align_within = parent
-align_scope = bracketed
-
 [sqlfluff:rules:convention.terminator]
 multiline_newline = True
 require_final_semicolon = False
@@ -51,6 +45,3 @@ ignore_comment_clauses = True
 
 [sqlfluff:rules:layout.select_targets]
 wildcard_policy = multiple
-
-[sqlfluff:layout:type:partitionby_clause]
-keyword_line_position = leading
