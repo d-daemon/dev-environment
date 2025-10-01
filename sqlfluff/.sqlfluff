@@ -5,7 +5,7 @@ verbose = 2
 nocolor = False
 dialect = bigquery
 templater = jinja
-sql_file_exts = .sql,.sql.j2,.dml,.ddl,.bqsql
+sql_file_exts = ".sql,.sql.j2,.dml,.ddl,.bqsql"
 processes = -1
 max_line_lenght = 120
 recursive = False
@@ -27,7 +27,7 @@ indented_using_on = True
 indented_on_contents = True
 indented_then = False
 indented_then_contents = True
-allow_implicit_indents = True
+allow_implicit_indents = False
 template_blocks_indent = True
 
 [sqlfluff:layout:type:alias_expression]
@@ -45,3 +45,6 @@ ignore_comment_clauses = True
 
 [sqlfluff:rules:layout.select_targets]
 wildcard_policy = multiple
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
