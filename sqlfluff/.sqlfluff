@@ -1,7 +1,7 @@
 # SQLFluff configuration file
-# SQLFluff version: 3.4.X
+# SQLFluff version: 3.4.0
 [sqlfluff]
-verbose = 2
+verbose = 3
 nocolor = False
 dialect = bigquery
 templater = jinja
@@ -16,7 +16,9 @@ recursive = False
 # RF02: References should be qualified if select has more than one referenced table/view
 # ST01: Do not specify else null in a case when statement (redundant)
 # L034: Select wildcards then simple targets before calculations and aggregates.
-exclude_rules = L031, RF01, RF02, ST01, L034
+# L036: [layout.select_targets] Select targets should be on a new line unless thereis only one select target
+
+exclude_rules = L031, RF01, RF02, ST01, L034, L036
 
 [sqlfluff:indentation]
 indent_unit = space
@@ -25,19 +27,26 @@ indented_joins = False
 indented_ctes = False
 indented_using_on = True
 indented_on_contents = True
-indented_then = False
+indented_then = True
 indented_then_contents = True
 allow_implicit_indents = False
 template_blocks_indent = True
+ignore_comment_lines = True
 
 [sqlfluff:layout:type:alias_expression]
 spacing_before = align
 align_within = statement
 align_scope = file
 
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+
 [sqlfluff:rules:convention.terminator]
-multiline_newline = True
-require_final_semicolon = False
+multiline_newline = False
+require_final_semicolon = True
 
 [sqlfluff:rules:layout.long_lines]
 ignore_comment_lines = True
@@ -46,5 +55,23 @@ ignore_comment_clauses = True
 [sqlfluff:rules:layout.select_targets]
 wildcard_policy = multiple
 
-[sqlfluff:rules:capitalisation.keywords]
-capitalisation_policy = upper
+[sqlfluff:layout:type:select_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:where_clause]
+line_position = alone:strict
+keyword_line_position = leading
+
+[sqlfluff:layout:type:from_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:join_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:groupby_clause]
+line_position = alone:strict
+keyword_line_position = leading
+
+[sqlfluff:layout:type:having_clause]
+line_position = alone
+keyword_line_position = leading
