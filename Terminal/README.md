@@ -2,8 +2,19 @@
 
 * [Warp](https://github.com/warpdotdev/Warp)
 * [Starship](https://github.com/starship/starship)
+* [WezTerm](https://wezfurlong.org/wezterm/)
 
 Credits to [theRubberDuckie](https://github.com/theRubberDuckiee) for the guide, starship config, and cool night Warp theme.
+
+# WezTerm
+
+WezTerm looks for `~/.wezterm.lua` on macOS. From the repository root, copy the starter config into place:
+
+```sh
+cp wezterm/.wezterm.lua ~/.wezterm.lua
+```
+
+The config uses WezTerm's built-in `tokyonight_night` color scheme.
 
 # Warp Starship Setup
 
