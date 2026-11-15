@@ -1,0 +1,120 @@
+﻿[project]
+name = "dev-evironment"
+version = "0.1.0"
+description = "PyProject template"
+readme = "README.md"
+requires-python = ">=3.11, <3.16"
+dependencies = []
+
+[dependency-groups]
+lint = [
+    "ruff>=0.17.4",
+]
+dev = [
+    "pytest>=9.2.0",
+    {include-group = "lint"}
+]
+
+[tool.ruff]
+# Exclude common directories and files from linting
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+line-length = 88          # Maximum allowed line length
+indent-width = 4          # Indentation width for code blocks
+fix = true                # Allow Ruff to auto-fix problems
+unsafe-fixes = false      # Do not apply unsafe fixes by default
+target-version = "py311"  # Target Python version for linting
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/default-rules/
+select = [
+#    "ALL", # Enables ALL lint
+   "F",   # pyflakes
+   "E",   # pycodestyle errors
+   "W",   # pycodestyle warnings
+   "I",   # isort (import sorting)
+   "N",   # pep8-naming (naming conventions)
+   "UP",  # pyupgrade (Python 3 syntax modernization)
+   "B",   # flake8-bugbear (common bugs)
+   "SIM", # flake8-simplify
+   "S",   # flake8-bandit
+   "PL",  # flake8-pylint-rules
+   "PT",  # flake8-pytest-style
+   "C90", # mccabe (complexity)
+]
+ignore = [
+    "B008",   # Checks for function calls in default function arguments.
+    "C408",   # Checks for unnecessary dict(), list() or tuple() calls that can be rewritten as empty literals.
+    "E402",   # Checks for imports that are not at the top of the file.
+    "E501",   # Checks for lines that exceed the specified maximum character length.
+    "ERA001", # Checks for commented-out Python code.
+    "G004",   # Checks for uses of f-strings to format logging messages.
+    # "PTH",    # Checks for flake8 pathlib
+    "SIM108", # Check for if-else-blocks that can be replaced with a ternary operator.
+    "SIM300", # Checks for conditions that position a constant on the left-hand side of the comparison operator, rather than the right-hand side.
+    "T201",   # Checks for print statements
+    "TRY003", # Checks for long exception messages that are not defined in the exception class itself.
+    "TRY301", # Checks for raise statements within try blocks. The only raises caught are those that throw exceptions caught by the try statement itself.
+    "UP015",  # Checks for redundant open mode arguments.
+]
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = [
+    "ALL",
+]
+unfixable = [
+    # "F401",  # Checks for unused imports.
+]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[\\p{XID_Continue}]*[\\p{XID_Continue}--_]+?))$"
+
+# Ignore `E402` (import violations) in all `__init__.py` files, and in selected subdirectories.
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"            # Use double quotes: "hello" (instead of single 'hello')
+indent-style = "space"            # Indent with spaces, not tabs
+skip-magic-trailing-comma = false # Like Black, respect magic trailing commas.
+line-ending = "auto"              # Keep OS default line endings (LF for Unix/macOS, CRLF for Windows)
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = true
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"
