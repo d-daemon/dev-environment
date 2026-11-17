@@ -1,0 +1,87 @@
+# Even Better TOML Configuration
+
+include = [
+  "**/*.toml",
+]
+exclude = [
+  "**/*nested-1000.toml",
+  "**/invalid/*",
+  "**/node_modules/**",
+  "target",
+  "test-data/**",
+]
+
+[formatting]
+align_comments        = true
+align_entries         = true
+allowed_blank_lines   = 2
+array_auto_collapse   = true
+array_auto_expand     = true
+array_trailing_comma  = true
+column_width          = 120
+compact_arrays        = true
+compact_inline_tables = false
+crlf                  = false
+indent_entries        = false
+indent_string         = "  "
+indent_tables         = false
+reorder_arrays        = true
+reorder_keys          = false
+trailing_newline      = true
+
+[[rule]]
+
+[rule.formatting]
+include = ["taplo.toml", ".taplo.toml"]
+keys    = ["exclude"]
+
+array_auto_collapse = false
+
+[[rule]]
+
+[rule.formatting]
+include = ["**/Cargo.toml"]
+
+array_auto_expand   = false
+inline_table_expand = false
+
+[[rule]]
+
+[rule.formatting]
+align_entries = true
+
+[[rule]]
+include = ["**/Cargo.toml"]
+keys    = ["*-dependencies", "dependencies", "workspace"]
+
+[rule.formatting]
+align_comments = true
+reorder_keys   = true
+
+[[rule]]
+include = ["**/Cargo.toml"]
+keys    = ["package", "workspace.package"]
+
+[rule.formatting]
+align_comments = true
+reorder_keys   = false
+
+[[rule]]
+include = ["**/Cargo.toml"]
+keys    = ["features"]
+
+[rule.formatting]
+reorder_arrays = true
+
+[[rule]]
+include = ["**/pyproject.toml", "project", "pyproject.toml"]
+schema  = { path = "https://json.schemastore.org/pyproject.json" }
+# keys = ["-dependencies", "dependencies", "project"]
+
+[rule.formatting]
+align_comments      = true
+align_entries       = true
+allowed_blank_lines = 1
+indent_string       = "    "
+reorder_arrays      = true
+reorder_keys        = false
